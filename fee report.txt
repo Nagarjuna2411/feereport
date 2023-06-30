@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String name;
+    private double feePaid;
+
+    public Student(String name, double feePaid) {
+        this.name = name;
+        this.feePaid = feePaid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getFeePaid() {
+        return feePaid;
+    }
+}
+
+class FeeReport {
+    private List<Student> students;
+
+    public FeeReport() {
+        this.students = new ArrayList<>();
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void generateReport() {
+        System.out.println("Fee Report");
+        System.out.println("-------------------------------");
+        System.out.println("Name\t\tFee Paid");
+        System.out.println("-------------------------------");
+        
+        for (Student student : students) {
+            System.out.printf("%s\t\t%.2f%n", student.getName(), student.getFeePaid());
+        }
+        
+        System.out.println("-------------------------------");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        FeeReport feeReport = new FeeReport();
+        
+        // Add sample student data
+        feeReport.addStudent(new Student("John Doe", 500.0));
+        feeReport.addStudent(new Student("Jane Smith", 750.0));
+        feeReport.addStudent(new Student("Bob Johnson", 1000.0));
+        
+        // Generate and display the fee report
+        feeReport.generateReport();
+    }
+}
